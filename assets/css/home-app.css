@@ -1,0 +1,284 @@
+html,
+body.nwmt-app-home {
+    min-height: 100%;
+}
+
+body.nwmt-app-home {
+    margin: 0;
+    background: #f4f7fb;
+    color: #172033;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body.nwmt-app-home.admin-bar {
+    min-height: calc(100% - 32px);
+}
+
+.nwmt-splash {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    min-height: 100svh;
+    place-items: end center;
+    overflow: hidden;
+    padding: 32px 20px 48px;
+    background-image: var(--nwmt-splash-image);
+    background-position: center;
+    background-size: cover;
+    transition:
+        opacity 480ms ease,
+        visibility 480ms ease;
+}
+
+.admin-bar .nwmt-splash {
+    top: 32px;
+    min-height: calc(100svh - 32px);
+}
+
+.nwmt-splash__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 20, 32, 0.12) 0%,
+            rgba(10, 20, 32, 0.28) 45%,
+            rgba(10, 20, 32, 0.88) 100%
+        );
+}
+
+.nwmt-splash__content {
+    position: relative;
+    z-index: 1;
+    width: min(620px, 100%);
+    color: #ffffff;
+    text-align: center;
+}
+
+.nwmt-splash__eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.nwmt-splash h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2.7rem, 9vw, 5.4rem);
+    font-weight: 900;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+    text-wrap: balance;
+}
+
+.nwmt-splash__subtitle {
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+.nwmt-splash__button {
+    min-width: 150px;
+    min-height: 48px;
+    margin-top: 28px;
+    padding: 11px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.nwmt-splash__button:hover,
+.nwmt-splash__button:focus-visible {
+    background: #ffffff;
+    color: #172033;
+}
+
+body.nwmt-app-ready .nwmt-splash {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nwmt-app {
+    display: grid;
+    min-height: 100svh;
+    place-items: center;
+    padding:
+        max(28px, env(safe-area-inset-top))
+        18px
+        max(28px, env(safe-area-inset-bottom));
+    opacity: 0;
+    transition: opacity 360ms ease 180ms;
+}
+
+body.nwmt-app-ready .nwmt-app {
+    opacity: 1;
+}
+
+.nwmt-app__panel {
+    width: min(620px, 100%);
+}
+
+.nwmt-app__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.nwmt-app__mark {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    place-items: center;
+    border-radius: 18px;
+    background: #172033;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.nwmt-app__name {
+    margin: 0;
+    color: #172033;
+    font-size: clamp(1.45rem, 5vw, 2rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+}
+
+.nwmt-app__tagline {
+    margin: 5px 0 0;
+    color: #68758b;
+    font-size: 0.96rem;
+}
+
+.nwmt-app-menu {
+    display: grid;
+    gap: 14px;
+}
+
+.nwmt-app-card {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    min-height: 92px;
+    padding: 18px;
+    border: 1px solid #dbe4f0;
+    border-radius: 22px;
+    background: #ffffff;
+    color: #172033;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(23, 32, 51, 0.06);
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+}
+
+.nwmt-app-card:hover,
+.nwmt-app-card:focus-visible {
+    border-color: #93c5fd;
+    color: #172033;
+    box-shadow: 0 12px 34px rgba(23, 32, 51, 0.1);
+    transform: translateY(-2px);
+}
+
+.nwmt-app-card__icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    border-radius: 17px;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.nwmt-app-card__icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.nwmt-app-card__text {
+    display: grid;
+    gap: 4px;
+}
+
+.nwmt-app-card__text strong {
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.nwmt-app-card__text small {
+    color: #68758b;
+    font-size: 0.88rem;
+    line-height: 1.35;
+}
+
+.nwmt-app-card__arrow {
+    color: #9aa7ba;
+    font-size: 1.45rem;
+}
+
+.nwmt-app__footer {
+    margin: 26px 0 0;
+    color: #7c899d;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+@media (max-width: 782px) {
+    body.nwmt-app-home.admin-bar {
+        min-height: calc(100% - 46px);
+    }
+
+    .admin-bar .nwmt-splash {
+        top: 46px;
+        min-height: calc(100svh - 46px);
+    }
+}
+
+@media (max-width: 480px) {
+    .nwmt-splash {
+        padding-bottom: 38px;
+    }
+
+    .nwmt-app {
+        place-items: start center;
+        padding-top: 42px;
+    }
+
+    .nwmt-app__header {
+        margin-bottom: 24px;
+    }
+
+    .nwmt-app-card {
+        min-height: 88px;
+        padding: 16px;
+        border-radius: 19px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nwmt-splash,
+    .nwmt-app,
+    .nwmt-app-card {
+        transition: none;
+    }
+}
