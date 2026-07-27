@@ -8,38 +8,52 @@ if (!defined('ABSPATH')) {
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1"
     >
+
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+
+<body <?php body_class('nwmt-inner-app'); ?>>
 <?php wp_body_open(); ?>
 
-<header class="nwmt-site-header">
-    <div class="nwmt-container nwmt-site-header__inner">
+<header class="nwmt-app-bar">
+    <div class="nwmt-container nwmt-app-bar__inner">
         <a
-            class="nwmt-site-brand"
+            class="nwmt-app-bar__brand"
             href="<?php echo esc_url(home_url('/')); ?>"
         >
-            <?php echo esc_html(get_bloginfo('name')); ?>
+            <span
+                class="nwmt-app-bar__mark"
+                aria-hidden="true"
+            >
+                NW
+            </span>
+
+            <span class="nwmt-app-bar__name">
+                <?php
+                echo esc_html__(
+                    'Northwest Monthly',
+                    'northwest-monthly'
+                );
+                ?>
+            </span>
         </a>
 
-        <nav
-            aria-label="<?php echo esc_attr__('Primary navigation', 'northwest-monthly'); ?>"
+        <a
+            class="nwmt-app-bar__home"
+            href="<?php echo esc_url(home_url('/')); ?>"
         >
             <?php
-            wp_nav_menu(
-                [
-                    'theme_location' => 'primary',
-                    'container' => false,
-                    'menu_class' => 'nwmt-primary-menu',
-                    'fallback_cb' => 'nwmt_render_default_menu',
-                ]
+            echo esc_html__(
+                'Home',
+                'northwest-monthly'
             );
             ?>
-        </nav>
+        </a>
     </div>
 </header>
 

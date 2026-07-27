@@ -3,7 +3,7 @@ Theme Name: Northwest Monthly
 Theme URI: https://nwmonthly.com/
 Author: Northwest Monthly
 Description: Lightweight custom theme for Northwest Monthly and Local Directory Framework.
-Version: 0.1.0
+Version: 0.1.1
 Text Domain: northwest-monthly
 */
 
@@ -271,3 +271,98 @@ img {
         grid-template-columns: 1fr;
     }
 }
+/* NWMT internal app shell start */
+
+body.nwmt-inner-app {
+    background: #ffffff;
+}
+
+.nwmt-app-bar {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    border-bottom: 1px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+}
+
+.admin-bar .nwmt-app-bar {
+    top: 32px;
+}
+
+.nwmt-app-bar__inner {
+    display: flex;
+    min-height: 68px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.nwmt-app-bar__brand {
+    display: inline-flex;
+    min-width: 0;
+    align-items: center;
+    gap: 11px;
+    color: #172033;
+    text-decoration: none;
+}
+
+.nwmt-app-bar__mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    place-items: center;
+    border-radius: 13px;
+    background: #172033;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.nwmt-app-bar__name {
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nwmt-app-bar__home {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nwmt-app-bar__home:hover,
+.nwmt-app-bar__home:focus-visible {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+@media (max-width: 782px) {
+    .admin-bar .nwmt-app-bar {
+        top: 46px;
+    }
+}
+
+@media (max-width: 420px) {
+    .nwmt-app-bar__inner {
+        min-height: 64px;
+    }
+
+    .nwmt-app-bar__name {
+        font-size: 0.94rem;
+    }
+}
+
+/* NWMT internal app shell end */
