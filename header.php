@@ -17,44 +17,42 @@ if (!defined('ABSPATH')) {
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('nwmt-inner-app'); ?>>
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="nwmt-app-bar">
-    <div class="nwmt-container nwmt-app-bar__inner">
+<a class="nwmt-skip-link" href="#primary">
+    <?php
+    echo esc_html__(
+        'Skip to content',
+        'northwest-monthly'
+    );
+    ?>
+</a>
+
+<header class="nwmt-site-header">
+    <div class="nwmt-shell nwmt-site-header__inner">
         <a
-            class="nwmt-app-bar__brand"
+            class="nwmt-site-brand"
             href="<?php echo esc_url(home_url('/')); ?>"
         >
             <span
-                class="nwmt-app-bar__mark"
+                class="nwmt-site-mark"
                 aria-hidden="true"
             >
                 NW
             </span>
 
-            <span class="nwmt-app-bar__name">
+            <span>
                 <?php
                 echo esc_html__(
-                    'Northwest Monthly',
+                    'NW Monthly',
                     'northwest-monthly'
                 );
                 ?>
             </span>
         </a>
-
-        <a
-            class="nwmt-app-bar__home"
-            href="<?php echo esc_url(home_url('/')); ?>"
-        >
-            <?php
-            echo esc_html__(
-                'Home',
-                'northwest-monthly'
-            );
-            ?>
-        </a>
     </div>
 </header>
 
 <main class="nwmt-main" id="primary">
+    <div class="nwmt-shell">
