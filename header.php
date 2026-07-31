@@ -3,6 +3,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+$is_home = is_front_page();
+$back_url = home_url('/');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -31,6 +34,24 @@ if (!defined('ABSPATH')) {
 
 <header class="nwmt-site-header">
     <div class="nwmt-shell nwmt-site-header__inner">
+        <?php if (!$is_home) : ?>
+            <a
+                class="nwmt-site-back"
+                href="<?php echo esc_url($back_url); ?>"
+            >
+                <span aria-hidden="true">&larr;</span>
+
+                <span>
+                    <?php
+                    echo esc_html__(
+                        'Back',
+                        'northwest-monthly'
+                    );
+                    ?>
+                </span>
+            </a>
+        <?php endif; ?>
+
         <a
             class="nwmt-site-brand"
             href="<?php echo esc_url(home_url('/')); ?>"
@@ -55,4 +76,6 @@ if (!defined('ABSPATH')) {
 </header>
 
 <main class="nwmt-main" id="primary">
-    <div class="nwmt-shell">
+    <?php if (!$is_home) : ?>
+        <div class="nwmt-shell">
+    <?php endif; ?>

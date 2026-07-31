@@ -3,16 +3,18 @@ Theme Name: NW Monthly
 Theme URI: https://nwmonthly.com/
 Author: NW Monthly
 Description: Minimal WordPress shell for Local Directory Framework.
-Version: 0.1.2
+Version: 0.1.4
 Text Domain: northwest-monthly
 */
 
 :root {
     --nwmt-navy: #172033;
     --nwmt-blue: #2563eb;
+    --nwmt-blue-hover: #1d4ed8;
     --nwmt-border: #dbe4f0;
-    --nwmt-background: #f4f7fb;
+    --nwmt-background: #f0f4f9;
     --nwmt-white: #ffffff;
+    --nwmt-muted: #526078;
 }
 
 * {
@@ -69,6 +71,8 @@ img {
 }
 
 .nwmt-site-header {
+    position: relative;
+    z-index: 10;
     border-bottom: 1px solid var(--nwmt-border);
     background: var(--nwmt-white);
 }
@@ -77,18 +81,30 @@ img {
     display: flex;
     min-height: 64px;
     align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
+.nwmt-site-back,
 .nwmt-site-brand {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
     color: var(--nwmt-navy);
     font-size: 0.94rem;
     font-weight: 800;
     text-decoration: none;
 }
 
+.nwmt-site-back {
+    gap: 7px;
+}
+
+.nwmt-site-brand {
+    gap: 9px;
+}
+
+.nwmt-site-back:hover,
+.nwmt-site-back:focus-visible,
 .nwmt-site-brand:hover,
 .nwmt-site-brand:focus-visible {
     color: var(--nwmt-navy);
@@ -100,7 +116,7 @@ img {
     height: 38px;
     place-items: center;
     border-radius: 12px;
-    background: var(--nwmt-blue);
+    background: var(--nwmt-navy);
     color: var(--nwmt-white);
     font-size: 0.72rem;
 }
@@ -143,7 +159,150 @@ img {
     text-align: center;
 }
 
-@media (max-width: 620px) {
+/* NW Monthly static front page */
+
+body.home {
+    background: var(--nwmt-background);
+}
+
+body.home .nwmt-site-header {
+    background:
+        linear-gradient(
+            90deg,
+            var(--nwmt-white) 0%,
+            var(--nwmt-white) 50%,
+            var(--nwmt-background) 50%,
+            var(--nwmt-background) 100%
+        );
+}
+
+body.home .nwmt-site-header__inner {
+    width: 100%;
+    max-width: none;
+    padding-right: clamp(24px, 3.5vw, 56px);
+    padding-left: clamp(24px, 3.5vw, 56px);
+    justify-content: flex-start;
+}
+
+body.home .nwmt-main {
+    padding: 0;
+}
+
+.nwmt-home-hero {
+    display: grid;
+    min-height: calc(100svh - 65px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.nwmt-home-hero__visual,
+.nwmt-home-hero__content {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.nwmt-home-hero__visual {
+    padding: clamp(36px, 6vw, 88px);
+    background: var(--nwmt-white);
+}
+
+.nwmt-home-hero__figure {
+    width: min(100%, 680px);
+    margin: 0;
+}
+
+.nwmt-home-hero__figure img {
+    display: block;
+    width: 100%;
+    max-height: calc(100svh - 145px);
+    object-fit: contain;
+}
+
+.nwmt-home-hero__content {
+    padding:
+        clamp(42px, 6vw, 84px)
+        clamp(24px, 5vw, 72px);
+    background: var(--nwmt-background);
+}
+
+.nwmt-home-hero__content-inner {
+    width: min(100%, 560px);
+    margin: auto;
+    text-align: center;
+}
+
+.nwmt-home-hero h1 {
+    margin: 0;
+    font-size: clamp(2.45rem, 4.7vw, 4.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.052em;
+}
+
+.nwmt-home-intro {
+    max-width: 500px;
+    margin: 24px auto 0;
+    color: var(--nwmt-muted);
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+    line-height: 1.55;
+}
+
+.nwmt-home-selector {
+    margin-top: clamp(38px, 6vh, 58px);
+}
+
+.nwmt-home-selector h2 {
+    margin: 0 0 20px;
+    font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+    line-height: 1.2;
+}
+
+.nwmt-state-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.nwmt-state-button {
+    display: flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border: 2px solid var(--nwmt-blue);
+    border-radius: 12px;
+    background: var(--nwmt-blue);
+    color: var(--nwmt-white);
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+}
+
+.nwmt-state-button:hover,
+.nwmt-state-button:focus-visible {
+    border-color: var(--nwmt-blue-hover);
+    background: var(--nwmt-blue-hover);
+    color: var(--nwmt-white);
+    transform: translateY(-2px);
+}
+
+.nwmt-home-note {
+    max-width: 430px;
+    margin: 22px auto 0;
+    color: #69758a;
+    font-size: 0.91rem;
+    line-height: 1.5;
+}
+
+.nwmt-home-hero__content .nwmd-site-footer {
+    margin-top: 38px;
+}
+
+@media (max-width: 780px) {
     .nwmt-shell {
         width: min(100% - 28px, 920px);
     }
@@ -154,5 +313,63 @@ img {
 
     .nwmt-content {
         border-radius: 16px;
+    }
+
+    body.home .nwmt-site-header {
+        background: var(--nwmt-background);
+    }
+
+    body.home .nwmt-site-header__inner {
+        width: min(100% - 28px, 620px);
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .nwmt-home-hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .nwmt-home-hero__visual {
+        padding: 26px 18px 8px;
+        background: var(--nwmt-background);
+    }
+
+    .nwmt-home-hero__figure {
+        width: min(100%, 440px);
+    }
+
+    .nwmt-home-hero__figure img {
+        max-height: none;
+    }
+
+    .nwmt-home-hero__content {
+        padding: 24px 18px 40px;
+    }
+
+    .nwmt-home-hero__content-inner {
+        width: min(100%, 520px);
+    }
+
+    .nwmt-home-hero h1 {
+        font-size: clamp(2rem, 9.5vw, 3rem);
+        letter-spacing: -0.045em;
+    }
+
+    .nwmt-home-intro {
+        margin-top: 18px;
+        font-size: 1.04rem;
+    }
+
+    .nwmt-home-selector {
+        margin-top: 36px;
+    }
+
+    .nwmt-state-list {
+        grid-template-columns: 1fr;
+    }
+
+    .nwmt-home-hero__content .nwmd-site-footer {
+        margin-top: 34px;
     }
 }
